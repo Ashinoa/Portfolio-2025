@@ -1,0 +1,33 @@
+@import "tailwindcss/preflight";
+@import "tailwindcss/utilities";
+
+:root{
+ --font-family-intro: "Press Start 2P", system-ui;
+
+}
+
+html,
+body {
+    background: #111;
+    height: 300vh; // 3 veces lo que mide la ventana en vertical
+    overflow-x: hidden;
+    overscroll-behavior: none;
+    color: white;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.font-init {
+  font-family: var(--font-family-intro);
+  font-size: 4.5vh;
+}
+/*
+@font-face {
+    font-family: GTA;
+    src: url("/fonts/gta-regular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+*/
