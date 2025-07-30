@@ -1,10 +1,14 @@
- @if (isLoading) {
-     <div class="fixed inset-0 bg-white z-50 flex items-center justify-center">
-        <p class="text-lg font-medium">Cargando...</p>
-    </div>
+@if (isLoading) {
+<div class="fixed inset-0 bg-white z-50 flex items-center justify-center">
+    <p class="text-lg font-medium">Cargando...</p>
+</div>
 }
-<app-start [isLoading]="isLoading" (isLoadingChange)="changeStateLoad($event)"></app-start>
+<div id="home-container">
+    <div id="start" class="opacity-100 ">
+        <app-start [isLoading]="isLoading" (isLoadingChange)="changeStateLoad($event)"></app-start>
+    </div>
+    <div id="aboutme" class="opacity-0">
+        <app-aboutme></app-aboutme>
+    </div>
 
-
-
-    
+</div>

@@ -1,33 +1,28 @@
 @import "tailwindcss/preflight";
 @import "tailwindcss/utilities";
 
-:root{
- --font-family-intro: "Press Start 2P", system-ui;
-
+:root {
+  --font-family-intro: "Press Start 2P", system-ui;
+  --gradient-aboutme: linear-gradient(180deg, #18062B 0.04%, #22408C 102.56%);
 }
 
 html,
 body {
-    background: #111;
-    height: 300vh; // 3 veces lo que mide la ventana en vertical
-    overflow-x: hidden;
-    overscroll-behavior: none;
-    color: white;
-    margin: 0;
-    padding: 0;
-    width: 100%;
+  background: #111;
+  height: 300vh; // 3 veces lo que mide la ventana en vertical
+  overflow-x: hidden;
+  overscroll-behavior: none;
+  color: white;
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }
 
 .font-init {
   font-family: var(--font-family-intro);
   font-size: 4.5vh;
 }
-/*
-@font-face {
-    font-family: GTA;
-    src: url("/fonts/gta-regular.woff") format("woff");
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-  }
-*/
+
+.background-aboutme{
+  background: var(--gradient-aboutme);
+}
