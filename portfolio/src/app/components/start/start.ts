@@ -1,0 +1,56 @@
+import { isPlatformBrowser } from '@angular/common';
+import { PLATFORM_ID, inject, Component, OnInit, Input,Output,EventEmitter } from '@angular/core';
+import { gsap } from "gsap";
+import { ScrollTrigger } from 'gsap/all';
+
+gsap.registerPlugin(ScrollTrigger);
+@Component({
+  selector: 'app-start',
+  imports: [],
+  templateUrl: './start.html',
+  styleUrl: './start.css'
+})
+export class Start implements OnInit {
+
+
+  @Input() isLoading!: boolean;
+  @Output() isLoadingChange = new EventEmitter<boolean>();
+
+  imageBackgorund: string = '';
+  private platformId = inject(PLATFORM_ID);
+
+  ngOnInit(): void {
+
+    if (isPlatformBrowser(this.platformId)) {
+      const img = new Image(); // Creamos una imagen en memoria
+      img.src = '/img/InicioRecortada.png';
+      this.imageBackgorund = img.src; //asigno la imagen precargada a la variable global (la del html)
+
+      if (this.imageBackgorund !== null && this.imageBackgorund !== '') {
+        console.log("isLoading antes del cambio ", this.isLoading);
+        this.isLoadingChange.emit(false);
+        console.log("isLoading despues del cambio ", this.isLoading);
+        setTimeout(() => {
+          this.startAnimations();
+        },0); //que espere a que Angular renderice el DOM
+
+      } else {
+        console.log("Error al cargar Imagen Back", this.imageBackgorund);
+      }
+    }
+
+  }
+
+  startAnimations() {
+    const tl = gsap.timeline({
+      ease: 'power2.out',
+      scrollTrigger: {
+        scrub: 1,
+      },
+    });
+
+    tl.to('#picture-id', { duration: 1, scale: 15 })
+      .to('#container-font', { opacity: 0 }, '<');
+  }
+
+}
