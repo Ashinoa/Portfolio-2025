@@ -43,8 +43,8 @@ export class Home implements OnInit {
       },
     });
 
-    timeline.to('#start', { opacity: 0, duration: 1})
-            .to('#aboutme', { opacity: 100, duration: 3 },'-=0.5');
+    timeline.to('#start', { opacity: 0, duration: 2})
+            .to('#aboutme', { opacity: 100, duration: 3},'-=0.5');
 
   }
 }
