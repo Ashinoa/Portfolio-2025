@@ -33,13 +33,15 @@ export class Aboutme implements OnInit {
       },
     });
 
-    tl.to('#text-aboutme', { duration: 1, scale: 1, x: 0, y: 0, });
+    tl.to('#text-aboutme', { duration: 3, scale: 1, x: 0, y: 0 })
+      .to('#picture-aboutme', { y: -450, duration: 1 })
+      .to('#brujita', { zIndex: 11 });
 
     const flyPath = gsap.timeline({ repeat: -1, yoyo: true });
     flyPath.to('#brujita', { x: 300, y: -30, duration: 2, ease: 'power1.inOut' })
-            .to('#brujita', { x: 600, y: 100, duration: 3, ease: 'power1.inOut' })
-            .to('#brujita', { x: 900, y: -30, duration: 2.5, ease: 'power1.inOut' })
-            .to('#brujita', { x: 1500, y: 30, duration: 2.5, ease: 'power1.inOut' });
+      .to('#brujita', { x: 600, y: 100, duration: 3, ease: 'power1.inOut' })
+      .to('#brujita', { x: 900, y: -30, duration: 2.5, ease: 'power1.inOut' })
+      .to('#brujita', { x: 1500, y: 30, duration: 2.5, ease: 'power1.inOut' });
   }
 
 }

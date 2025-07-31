@@ -49,8 +49,8 @@ export class Start implements OnInit {
       },
     });
 
-    tl.to('#picture-id', { duration: 1, scale: 15 })
-      .to('#container-font', { opacity: 0 }, '<');
+    tl.to('#picture-id', { duration: 2, scale: 15 })
+      .to('#container-font', { opacity: 0, duration: 2 }, '<');
   }
 
 }
