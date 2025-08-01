@@ -33,8 +33,8 @@ export class Aboutme implements OnInit {
       },
     });
 
-    tl.to('#text-aboutme', { duration: 3, scale: 1, x: 0, y: 0 })
-      .to('#picture-aboutme', { y: -450, duration: 1 })
+    tl.to('#text-aboutme', { duration: 2, scale: 1, x: 0, y: 0 })
+      .to('#container-description', { y: 0, duration: 1 })
       .to('#brujita', { zIndex: 11 });
 
     const flyPath = gsap.timeline({ repeat: -1, yoyo: true });

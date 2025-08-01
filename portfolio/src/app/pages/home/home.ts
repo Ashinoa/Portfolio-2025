@@ -38,6 +38,7 @@ export class Home implements OnInit {
   startAnimations() {
     const timeline = gsap.timeline({
       ease: 'power2.out',
+      snapTo: 'labels',
       scrollTrigger: {
         scrub: 1,
       },
