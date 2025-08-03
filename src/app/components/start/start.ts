@@ -22,7 +22,12 @@ export class Start implements OnInit {
   ngOnInit(): void {
 
     if (isPlatformBrowser(this.platformId)) {
-      const img = new Image(); // Creamos una imagen en memoria
+      this.isLoadingChange.emit(false);
+      setTimeout(() => {
+        
+          this.startAnimations();
+        },0);
+      /*const img = new Image(); // Creamos una imagen en memoria
       img.src = '/img/InicioRecortada.png';
       this.imageBackgorund = img.src; //asigno la imagen precargada a la variable global (la del html)
 
@@ -36,7 +41,7 @@ export class Start implements OnInit {
 
       } else {
         console.log("Error al cargar Imagen Back", this.imageBackgorund);
-      }
+      }*/
     }
 
   }
