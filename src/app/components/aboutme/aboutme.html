@@ -4,19 +4,24 @@
             <img id="brujita" src="/img/brujita.svg" class="absolute object-contain w-[100px] h-[100px] z-0">
         </div>
         <section id="section-img-aboutme">
-            <picture id="picture-aboutme" class=" h-screen w-full fixed flex justify-center items-start overflow-hidden">
+            <picture id="picture-aboutme"
+                class=" h-screen w-full fixed flex justify-center items-start overflow-hidden">
                 <img id="text-aboutme" src="/img/sobremiFiltros.webp"
-                    class="px-[5vh] w-full h-auto object-contain z-10 transform scale-[20] translate-x-[50%] translate-y-[150%]" />
+                    class="px-[5vh] w-full h-auto object-contain z-10 transform scale-[20]" />
             </picture>
         </section>
 
-        <div  class="fixed w-full h-screen flex items-center justify-center px-8 md:px-20 py-16 z-20">
-            <div id="container-description" class="max-w-[200vh] text-center transform translate-y-[200%]">
+
+        <div id="container-text-description-aboutme" class="fixed w-full h-screen flex items-center justify-center px-8 md:px-20 py-16 z-20">
+            <div id="container-description" class="max-w-[200vh] text-center" [ngStyle]="{ transform: 'translateY(' + viewportY + '%)' }">
                 <span id="text-description" class="font-init tracking-[6px] leading-relaxed text-white ">
-                    Soy desarrolladora front-end y diseñadora UX/UI en progreso, busco mi primera oportunidad laboral para poder aportar mis conocimientos en proyectos reales.
+                    Soy desarrolladora front-end y diseñadora UX/UI en progreso, busco mi primera oportunidad laboral
+                    para poder aportar mis conocimientos en proyectos reales.
                 </span>
             </div>
         </div>
+
+
 
 
     </div>

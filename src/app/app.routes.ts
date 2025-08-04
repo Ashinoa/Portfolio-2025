@@ -4,7 +4,7 @@ import { Aboutme } from './components/aboutme/aboutme';
 
 
 export const routes: Routes = [
-    {path: '', component: Home},
+    {path: '', component: Aboutme},
     {path: '**', redirectTo: ''}
 
 ];

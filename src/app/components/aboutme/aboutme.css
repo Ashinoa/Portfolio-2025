@@ -14,17 +14,15 @@
 
 @media screen and (max-width: 767.5px) {
     /* Estilos para pantallas de hasta 767.5px de ancho */
-
     #text-description {
-        font-size: var(--font-size-paragraph1);
+        font-size: var(--font-size-paragraph2);
         white-space: wrap;
     }
 
 }
 
 @media screen and (max-width: 430px) {
-    /* Estilos para pantallas de hasta 767.5px de ancho */
-
+    /* Estilos para pantallas de hasta 430px de ancho */
     #text-description {
         font-size: var(--font-size-paragraph4);
         white-space: wrap;
@@ -32,11 +30,19 @@
 
 }
 
-
 @media screen and (min-width: 2000px) {
-
     /* Estilos para pantallas de 767.5px o más de ancho */
     #text-description {
         font-size: var(--font-size-title1);
+    }
+}
+
+
+@media screen and (orientation: landscape) and (max-height: 1080px) and (min-width: 2000px) {
+    /*Hasta 1080px de alto y a partir 2000px de ancho */
+
+    #text-description {
+        font-size: var(--font-size-paragraph3);
+        white-space: wrap;
     }
 }

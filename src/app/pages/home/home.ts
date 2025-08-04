@@ -15,7 +15,6 @@ gsap.registerPlugin(ScrollTrigger);
 })
 export class Home implements OnInit {
 
-  isLoading = true;
   private platformId = inject(PLATFORM_ID);
 
   constructor(private cdr: ChangeDetectorRef) { }
