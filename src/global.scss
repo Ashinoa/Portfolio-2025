@@ -5,6 +5,20 @@
   --font-family-intro: "Press Start 2P", system-ui;
   --gradient-aboutme: linear-gradient(180deg, #18062B 0.04%, #22408C 102.56%);
   --gradient-start: linear-gradient(180deg,#15195E 0.04%,#4127CB 15.56%,#29103C 90%);
+  --font-size-display1: clamp(2.5rem, 5vw, 4.5rem);    /* 40px → 72px */
+  --font-size-title1:  clamp(2rem, 4vw, 3.5rem);        /* 32px → 56px */
+  --font-size-title2:  clamp(1.8rem, 3.5vw, 3rem);      /* 28.8px → 48px */
+  --font-size-title3:  clamp(1.5rem, 3vw, 2.25rem);     /* 24px → 36px */
+  --font-size-title4:  clamp(1.25rem, 2.5vw, 2rem);     /* 20px → 32px */
+  --font-size-title5:  clamp(1rem, 2vw, 1.5rem);        /* 16px → 24px */
+  --font-size-title6:  clamp(0.875rem, 1.5vw, 1.125rem);/* 14px → 18px */
+
+  --font-size-paragraph1: clamp(1.25rem, 2.5vw, 2rem);  /* 20px → 32px */
+  --font-size-paragraph2: clamp(1rem, 2vw, 1.5rem);     /* 16px → 24px */
+  --font-size-paragraph3: clamp(0.875rem, 1.5vw, 1.125rem); /* 14px → 18px */
+  --font-size-paragraph4: clamp(0.875rem, 1.25vw, 1rem);/* 14px → 16px */
+
+  --font-size-link: clamp(0.75rem, 1vw, 0.875rem);      /* 12px → 14px */
 }
 
 html,
@@ -21,7 +35,7 @@ body {
 
 .font-init {
   font-family: var(--font-family-intro);
-  font-size: 4.5vh;
+  font-size: var( --font-size-title4);
 }
 
 
