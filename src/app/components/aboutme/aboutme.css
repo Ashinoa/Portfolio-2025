@@ -11,3 +11,32 @@
     top: 0;
     left: 0;
 }
+
+@media screen and (max-width: 767.5px) {
+    /* Estilos para pantallas de hasta 767.5px de ancho */
+
+    #text-description {
+        font-size: var(--font-size-paragraph1);
+        white-space: wrap;
+    }
+
+}
+
+@media screen and (max-width: 430px) {
+    /* Estilos para pantallas de hasta 767.5px de ancho */
+
+    #text-description {
+        font-size: var(--font-size-paragraph4);
+        white-space: wrap;
+    }
+
+}
+
+
+@media screen and (min-width: 2000px) {
+
+    /* Estilos para pantallas de 767.5px o más de ancho */
+    #text-description {
+        font-size: var(--font-size-title1);
+    }
+}

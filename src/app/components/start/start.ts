@@ -20,21 +20,6 @@ export class Start implements OnInit {
       setTimeout(() => {
           this.startAnimations();
         },0);
-      /*const img = new Image(); // Creamos una imagen en memoria
-      img.src = '/img/InicioRecortada.png';
-      this.imageBackgorund = img.src; //asigno la imagen precargada a la variable global (la del html)
-
-      if (this.imageBackgorund !== null && this.imageBackgorund !== '') {
-        console.log("isLoading antes del cambio ", this.isLoading);
-        this.isLoadingChange.emit(false);
-        console.log("isLoading despues del cambio ", this.isLoading);
-        setTimeout(() => {
-          this.startAnimations();
-        },0); //que espere a que Angular renderice el DOM
-
-      } else {
-        console.log("Error al cargar Imagen Back", this.imageBackgorund);
-      }*/
     }
 
   }

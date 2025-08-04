@@ -2,8 +2,10 @@ import { isPlatformBrowser } from '@angular/common';
 import { PLATFORM_ID, inject, Component, OnInit } from '@angular/core';
 import { gsap } from 'gsap/gsap-core';
 import { ScrollTrigger } from 'gsap/all';
+import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
 
 gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrambleTextPlugin);
 
 @Component({
   selector: 'app-aboutme',
@@ -32,10 +34,20 @@ export class Aboutme implements OnInit {
         scrub: 1,
       },
     });
-
+    
     tl.to('#text-aboutme', { duration: 2, scale: 1, x: 0, y: 0 })
-      .to('#container-description', { y: 0, duration: 1 })
-      .to('#brujita', { zIndex: 11 });
+      .to('#brujita', { zIndex: 11 })
+      .to('#container-description', { y: 150, duration: 1 })
+      .to('#text-description', {
+        duration: 2,
+        scrambleText: {
+          text: "{original}",
+          chars: "^(?=.*[a-zñÑ])(?=.*[A-ZÑñ])(?=.*\d)[a-zA-Z0-9ñÑ]*$",
+          revealDelay: 1,
+          speed: 0.8
+        }
+      }, '<');
+
 
     const flyPath = gsap.timeline({ repeat: -1, yoyo: true });
     flyPath.to('#brujita', { x: 300, y: -30, duration: 2, ease: 'power1.inOut' })
