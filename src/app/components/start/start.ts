@@ -1,5 +1,5 @@
 import { isPlatformBrowser } from '@angular/common';
-import { PLATFORM_ID, inject, Component, OnInit, Input,Output,EventEmitter } from '@angular/core';
+import { PLATFORM_ID, inject, Component, OnInit } from '@angular/core';
 import { gsap } from "gsap";
 import { ScrollTrigger } from 'gsap/all';
 
@@ -12,19 +12,12 @@ gsap.registerPlugin(ScrollTrigger);
 })
 export class Start implements OnInit {
 
-
-  @Input() isLoading!: boolean;
-  @Output() isLoadingChange = new EventEmitter<boolean>();
-
-  imageBackgorund: string = '';
   private platformId = inject(PLATFORM_ID);
 
   ngOnInit(): void {
 
     if (isPlatformBrowser(this.platformId)) {
-      this.isLoadingChange.emit(false);
       setTimeout(() => {
-        
           this.startAnimations();
         },0);
       /*const img = new Image(); // Creamos una imagen en memoria

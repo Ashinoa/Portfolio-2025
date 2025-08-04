@@ -22,16 +22,11 @@ export class Home implements OnInit {
 
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
+       this.cdr.detectChanges();
       setTimeout(() => {
         this.startAnimations();
       }, 0); //que espere a que Angular renderice el DOM
     }
-  }
-
-  changeStateLoad(value: boolean) {
-    console.log("Cambio de valor isLoading");
-    this.isLoading = value;
-    this.cdr.detectChanges(); // fuerza a Angular a revisar los cambios después del cambio manual
   }
 
 
