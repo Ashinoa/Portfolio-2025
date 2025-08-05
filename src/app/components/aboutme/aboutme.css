@@ -19,6 +19,18 @@
         white-space: wrap;
     }
 
+    #text-aboutme{
+        padding-inline: 0;
+        padding-top: 10vw;
+    }
+    .background-aboutme{
+       background: linear-gradient(180deg,#22408C 0.04%,#ff9222 102.56%); 
+    }
+    #brujita{
+        width: clamp(6.5rem, 5vw, 10.5rem);
+        height: clamp(6.5rem, 5vw, 10.5rem);
+    }
+
 }
 
 @media screen and (max-width: 430px) {
@@ -26,6 +38,10 @@
     #text-description {
         font-size: var(--font-size-paragraph4);
         white-space: wrap;
+    }
+    #brujita{
+        width: clamp(3.5rem, 5vw, 6.5rem);
+        height: clamp(3.5rem, 5vw, 6.5rem);
     }
 
 }

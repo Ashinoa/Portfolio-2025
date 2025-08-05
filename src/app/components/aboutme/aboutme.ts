@@ -4,7 +4,7 @@ import { gsap } from 'gsap/gsap-core';
 import { ScrollTrigger } from 'gsap/all';
 import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
 import { CommonModule } from '@angular/common';
-import { fromEvent, Subscription } from 'rxjs';
+import { debounceTime, fromEvent, Subscription } from 'rxjs';
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(ScrambleTextPlugin);
@@ -17,41 +17,79 @@ gsap.registerPlugin(ScrambleTextPlugin);
 })
 export class Aboutme implements OnInit, OnDestroy {
 
-  viewportWidth!: any;
-  viewportHeight!: any;
+  private viewportWidth!: any;
+  private viewportHeight!: any;
   private platformId = inject(PLATFORM_ID);
   private resizeSubscription!: Subscription;
   viewportY!: any;
+  private flyPath!: gsap.core.Timeline;
+
 
 
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
-      this.checkResize();
-      this.viewportY = (window.innerHeight * 100)/100;
+      this.defineViewports();
       setTimeout(() => {
-        this.startAnimations();
+        this.startAnimationsAboutMe();
+        this.animationsWitch(this.viewportWidth, this.viewportHeight);
       }, 0);
+
+      this.resizeSubscription = fromEvent(window, 'resize')
+      .pipe(debounceTime(200)) // Espera 200ms después de que se deje de redimensionar
+      .subscribe(() => {
+        this.defineViewports(); // Actualiza medidas
+        this.animationsWitch(this.viewportWidth, this.viewportHeight); // Reinicia animación adaptada
+      });
+
     }
   }
 
-  checkResize() {
-    this.resizeSubscription = fromEvent(window, 'resize').subscribe(() => {
-      this.viewportWidth = window.innerWidth;
-      this.viewportHeight = window.innerHeight;
-    });
+  defineViewports() {
+    this.viewportWidth = window.innerWidth;
+    this.viewportHeight = window.innerHeight;
+    this.viewportY = (window.innerHeight * 100) / 100;
   }
-
 
   ngOnDestroy(): void {
     if (isPlatformBrowser(this.platformId)) {
-      if (this.resizeSubscription) {
-        this.resizeSubscription?.unsubscribe();
-      }
-
+      this.resizeSubscription?.unsubscribe();
+      this.flyPath?.kill(); //  Detenemos la animación si está activa
     }
   }
 
-  startAnimations() {
+  animationsWitch(widthScreen: any, heightScreen: any) {
+    if (this.flyPath) {
+      this.flyPath.kill(); // Evita animaciones duplicadas o errores al redimensionar
+      this.flyPath = null!;
+    }
+
+    gsap.set('#brujita',{x: 0, y: 0});
+
+    this.flyPath = gsap.timeline({ repeat: -1, yoyo: true });
+
+    if (widthScreen !== null && heightScreen !== null && widthScreen >= 700) {
+      this.flyPath.to('#brujita', {
+        x: (widthScreen * 25) / 100, y: -(heightScreen * 5) / 100, duration: 2, ease: 'power1.inOut'})
+        .to('#brujita', {
+          x: (widthScreen * 50) / 100, y: (heightScreen * 10) / 100, duration: 3, ease: 'power1.inOut'})
+        .to('#brujita', {
+          x: (widthScreen * 75) / 100, y: -(heightScreen * 5) / 100, duration: 2.5, ease: 'power1.inOut'})
+        .to('#brujita', {
+          x: (widthScreen * 90) / 100, y: (heightScreen * 10) / 100, duration: 2.5, ease: 'power1.inOut'});
+
+    } else if (widthScreen !== null && heightScreen !== null && widthScreen < 700) {
+      this.flyPath.to('#brujita', {
+        x: (widthScreen * 25) / 100, y: -(heightScreen * 2) / 100, duration: 2, ease: 'power1.inOut'})
+        .to('#brujita', {
+          x: (widthScreen * 50) / 100, y: (heightScreen * 5) / 100, duration: 3, ease: 'power1.inOut' })
+        .to('#brujita', {
+          x: (widthScreen * 90) / 100, y: -(heightScreen * 2) / 100, duration: 2.5, ease: 'power1.inOut'})
+    } else {
+      console.log("WidthScreen es Null o HeightScreen es null");
+    }
+  }
+
+  startAnimationsAboutMe() {
     const tl = gsap.timeline({
       ease: 'power2.out',
       scrollTrigger: {
@@ -71,13 +109,6 @@ export class Aboutme implements OnInit, OnDestroy {
           speed: 0.8
         }
       }, '<');
-
-    /*
-  const flyPath = gsap.timeline({ repeat: -1, yoyo: true });
-  flyPath.to('#brujita', { x: 300, y: -30, duration: 2, ease: 'power1.inOut' })
-    .to('#brujita', { x: 600, y: 100, duration: 3, ease: 'power1.inOut' })
-    .to('#brujita', { x: 900, y: -30, duration: 2.5, ease: 'power1.inOut' })
-    .to('#brujita', { x: 1500, y: 30, duration: 2.5, ease: 'power1.inOut' });*/
   }
 
 }
