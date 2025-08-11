@@ -60,7 +60,7 @@ export class Aboutme implements OnInit, OnDestroy {
   animationsWitch(widthScreen: any, heightScreen: any) {
     if (this.flyPath) {
       this.flyPath.kill(); // Evita animaciones duplicadas o errores al redimensionar
-      this.flyPath = null!;
+      this.flyPath = null!; // Por las dudas le metemos null a la linea del tiempo anterior cuando se redimensiona la pantalla
     }
 
     gsap.set('#brujita',{x: 0, y: 0});

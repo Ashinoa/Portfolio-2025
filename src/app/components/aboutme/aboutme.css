@@ -1,3 +1,7 @@
+#text-description{
+    font-size: var(--font-size-paragraph4);
+}
+
 .background-aboutme{
   background: var(--gradient-aboutme);
 }
@@ -15,13 +19,12 @@
 @media screen and (max-width: 767.5px) {
     /* Estilos para pantallas de hasta 767.5px de ancho */
     #text-description {
-        font-size: var(--font-size-paragraph2);
-        white-space: wrap;
+        font-size: clamp(0.625rem, calc(0.5rem + 1vw), 0.75rem); /* 10px → 12px */
     }
 
     #text-aboutme{
         padding-inline: 0;
-        padding-top: 10vw;
+        padding-top: 5vw;
     }
     .background-aboutme{
        background: linear-gradient(180deg,#22408C 0.04%,#ff9222 102.56%); 
@@ -30,15 +33,28 @@
         width: clamp(6.5rem, 5vw, 10.5rem);
         height: clamp(6.5rem, 5vw, 10.5rem);
     }
-
 }
 
-@media screen and (max-width: 430px) {
-    /* Estilos para pantallas de hasta 430px de ancho */
-    #text-description {
-        font-size: var(--font-size-paragraph4);
+@media screen and (max-height: 600px){
+     #text-description {
+        font-size:9px;
         white-space: wrap;
     }
+    #container-description{
+        transform: translate(0,15px) !important;
+    }
+}
+
+@media screen and (max-width: 430px){
+    /* Estilos para pantallas de hasta 430px de ancho */
+    #text-description {
+        font-size: 9px;
+        white-space: wrap;
+    }
+    #container-description{
+        transform: translate(0,10px) !important;
+    }
+    
     #brujita{
         width: clamp(3.5rem, 5vw, 6.5rem);
         height: clamp(3.5rem, 5vw, 6.5rem);
@@ -47,18 +63,9 @@
 }
 
 @media screen and (min-width: 2000px) {
-    /* Estilos para pantallas de 767.5px o más de ancho */
+    /* Estilos para pantallas de 2000px o más de ancho */
     #text-description {
-        font-size: var(--font-size-title1);
+        font-size: var(--font-size-title5);
     }
 }
 
-
-@media screen and (orientation: landscape) and (max-height: 1080px) and (min-width: 2000px) {
-    /*Hasta 1080px de alto y a partir 2000px de ancho */
-
-    #text-description {
-        font-size: var(--font-size-paragraph3);
-        white-space: wrap;
-    }
-}
