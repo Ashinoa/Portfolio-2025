@@ -40,21 +40,16 @@
         font-size:9px;
         white-space: wrap;
     }
-    #container-description{
-        transform: translate(0,15px) !important;
-    }
+    
 }
 
 @media screen and (max-width: 430px){
     /* Estilos para pantallas de hasta 430px de ancho */
     #text-description {
-        font-size: 9px;
+        font-size: 6px;
         white-space: wrap;
     }
-    #container-description{
-        transform: translate(0,10px) !important;
-    }
-    
+        
     #brujita{
         width: clamp(3.5rem, 5vw, 6.5rem);
         height: clamp(3.5rem, 5vw, 6.5rem);
