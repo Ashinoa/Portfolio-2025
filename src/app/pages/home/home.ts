@@ -1,33 +1,40 @@
 import { isPlatformBrowser } from '@angular/common';
-import { PLATFORM_ID, inject, Component, ChangeDetectorRef, OnInit } from '@angular/core';
+import { PLATFORM_ID, inject, Component, ChangeDetectorRef, OnInit, OnDestroy } from '@angular/core';
 import { gsap } from "gsap";
 import { ScrollTrigger } from 'gsap/all';
 import { Start } from "../../components/start/start";
 import { Aboutme } from "../../components/aboutme/aboutme";
+import { Projects } from '../../components/projects/projects';
 
 gsap.registerPlugin(ScrollTrigger);
 
 @Component({
   selector: 'app-home',
-  imports: [Start, Aboutme],
+  imports: [Start, Aboutme, Projects],
   templateUrl: './home.html',
   styleUrl: './home.css'
 })
-export class Home implements OnInit {
+export class Home implements OnInit, OnDestroy {
 
   private platformId = inject(PLATFORM_ID);
+
 
   constructor(private cdr: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
-       this.cdr.detectChanges();
+      this.cdr.detectChanges();
       setTimeout(() => {
         this.startAnimations();
+        
       }, 0); //que espere a que Angular renderice el DOM
     }
   }
 
+
+  ngOnDestroy(): void {
+    ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+  }
 
   startAnimations() {
     const timeline = gsap.timeline({
@@ -37,10 +44,15 @@ export class Home implements OnInit {
       },
     });
 
-    timeline.to('#start', { opacity: 0, duration: 1})
-            .to('#aboutme', { opacity: 100, duration: 1},'-=0.8');
-
+    timeline.to('#start', { opacity: 0, duration: 1 })
+      .to('#aboutme', { opacity: 100, duration: 2 }, '-=0.08')
+      .to('#aboutme', { opacity: 0, duration: 1 })
+      .to('#projects', { opacity: 100, duration: 1 });
   }
+
+ 
+
+
 }
 
 
