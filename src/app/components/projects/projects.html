@@ -1,29 +1,64 @@
 <div id="container-background" class="background-projects fixed top-0 w-full h-screen">
   <div class="stars z-1">
 
-    <div id="container-img-back">      
-      <div id="container-cards" class="w-full h-screen flex justify-center items-center gap-[10vw] opacity-0 transform translate-y-[-50px]">
+    <div id="container-img-back">
+      <div id="container-cards"
+        class="w-full h-screen flex justify-center items-center gap-[10vw] opacity-0 transform translate-y-[-50px]">
         <div>
           <img id="card-meduxia" src="/img/MeduxiaCarta.svg" class="z-10 card object-contain w-[15vw] h-auto"
-            alt="meduxia">
+            alt="meduxia" (click)="showDescription('dimaia')">
         </div>
         <div>
           <img id="card-portfolio" src="/img/Portfolio2024Carta.svg" class="z-10 card object-contain w-[15vw] h-auto"
-            alt="portfolio">
+            alt="portfolio" (click)="showDescription('portfolio')">
         </div>
         <div>
           <img id="card-refri410" src="/img/Refri410Carta.svg" class="z-10 card object-contain w-[12vw] h-auto"
-            alt="refri410">
+            alt="refri410" (click)="showDescription('refri')">
         </div>
-       
+
       </div>
     </div>
 
-
-
-
-
-
-
   </div>
 </div>
+
+@if(showDimaia){
+<div id="container-dimaia" class="modal-overlay" (click)="closePopup('dimaia')">
+  <div class="modal-content ">
+    <h3 class="header3">DIMAIA</h3>
+    <p class="paragraph1">
+      Sistema que utiliza modelos de IA que predicen posibles enfermedades que sirva de asistente para médicos a la hora
+      de realizar diagnósticos y que a técnicos en imágenes les sea más fácil realizar sus informes.
+      Dentro del proyecto se utilizó SAFe y Scrum como metodologias y Jira para gestión de tareas y seguimiento de
+      incidencias.Se utilizó Figma e Illustrator para UX/UI y crear la marca del producto. UML para modelar diagramas de
+      flujo de
+      usuarios. Se utilizó Angular y TypeScript para la creación de componentes y consumir APIs REST.
+    </p><a class="header4" href="https://dimaia.vercel.app/" target="_blank" rel="noopener noreferrer">VER PROYECTO</a>
+  </div>
+</div>
+}
+@else if(showPortfolio){
+<div class="modal-overlay" (click)="closePopup('portfolio')">
+  <div class="modal-content">
+    <h3 class="header3">PORTFOLIO 2024</h3>
+    <p class="paragraph1">
+      Mi antiguo portfolio diseñado en Figma, y desarrollado con Angular y TypeScript para la creación de componentes, 
+      esta página web recopila solo algunos de mis proyectos academicos.
+    </p><a class="header4" href="" target="_blank" rel="noopener noreferrer">VER PROYECTO</a>
+  </div>
+</div>
+
+}
+@else if(showRefri){
+  <div class="modal-overlay" (click)="closePopup('refri')">
+  <div class="modal-content">
+    <h3 class="header3">REFRI410</h3>
+    <p class="paragraph1">
+      Página web que ofrece cursos de refrigeración y electrónica, desarrollada con Angular y TypeScript para la creación de componentes, 
+      esta página se encuentra conectada a otra, en la cual se gestiona el CRUD de alumnos de los cursos, donde a cada alumno se le asigna un código Qr
+      al ingresarlo en el sistema. Se utilizó Spring Boot y MySQL Workbench para el backend.
+    </p><a class="header4" href="" target="_blank" rel="noopener noreferrer">VER PROYECTO</a>
+  </div>
+</div>
+}
