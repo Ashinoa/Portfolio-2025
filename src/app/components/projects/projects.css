@@ -2,8 +2,9 @@
   background: linear-gradient(180deg, #22408C 0.04%, #9A779B 44%, #E2A491 71%, #FEF9DA 80.56%);
 }
 
+
 #container-img-back {
-  background: url(/img/backProjects.svg);
+  background: url('/img/backProjects.svg');
   width: 100%;
   height: 100%;
   background-size: cover;
@@ -13,16 +14,16 @@
   background-position: bottom;
 }
 
-#container-cards img {
-  transition: transform 0.3s ease-out;
-  pointer-events: none;
-  /* bloqueado al inicio */
+#dimaia, #portfolio, #refri {
+  transition: transform 0.3s ease-out; 
+
+  &:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+  }
 }
 
-#container-cards img.hover-enabled:hover {
-  transform: scale(1.1);
-  cursor: pointer;
-}
+
 
 .modal-overlay {
   background: #00000080;
@@ -30,8 +31,8 @@
   position: fixed;
   top: 0;
   z-index: 3;
-  width: 100%; 
-  height: 100vh; 
+  width: 100%;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -51,12 +52,13 @@
 .paragraph1 {
   font-weight: 100;
   line-height: 1.8;
-  margin: 0;
+  margin: 5px;
 }
 
 .header3, .header4 {
   font-weight: 900;
   margin: 0;
+  font-size: var(--font-size-paragraph4);
 }
 
 @media screen and (max-width: 767.5px) {

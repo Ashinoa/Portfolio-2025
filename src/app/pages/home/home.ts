@@ -18,7 +18,7 @@ export class Home implements OnInit, OnDestroy {
 
   private platformId = inject(PLATFORM_ID);
 
-  projects !: boolean;
+  projects: boolean = false;
 
   constructor(private cdr: ChangeDetectorRef) { }
 
@@ -26,6 +26,12 @@ export class Home implements OnInit, OnDestroy {
     if (isPlatformBrowser(this.platformId)) {
       this.cdr.detectChanges();
       setTimeout(() => {
+        const component = document.getElementById('projects');
+          console.log("onComponent: ", component, "pointer events: ", component?.style.pointerEvents);
+          if (component) {
+            component.style.pointerEvents = 'none';
+            component.style.cursor = 'not-allowed';
+          }
         this.startAnimations();
 
       }, 0); //que espere a que Angular renderice el DOM
@@ -39,65 +45,63 @@ export class Home implements OnInit, OnDestroy {
 
   startAnimations() {
     const timeline = gsap.timeline({
-      ease: 'power2.out',
+      ease: 'power3.out',
       scrollTrigger: {
-        scrub: 1
+        scrub: 1,
+        onEnter: () => {
+          const component = document.getElementById('projects');
+          if (component) {
+            component.style.pointerEvents = 'none';
+            component.style.cursor = 'not-allowed';
+          }
+        }
+        
       },
     });
 
 
     timeline.to('#start', { opacity: 0, duration: 1 })
-      .to('#aboutme', { opacity: 100, duration: 2 }, '-=0.08')
+      .to('#aboutme', { opacity: 100, duration: 1 }, '-=0.08')
       .to('#aboutme', { opacity: 0, duration: 1 })
-      .to('#projects', { opacity: 100, duration: 1, display: "block", pointerEvents: "auto", 
-        onComplete:() =>{
-        this.onComponentLeave("projects");
-      }, 
-      onReverseComplete:() =>{
-         this.onComponentLeave("projects");
-      } });
+      .to('#projects', {opacity: 100, duration: 1, pointerEvents: 'auto', cursor: 'auto', 
+        onComplete: () => {
+          const component = document.getElementById('projects');
+          console.log("onComponent: ", component, "pointer events: ", component?.style.pointerEvents);
+          if (component) {
+            component.style.pointerEvents = 'none';
+            component.style.cursor = 'not-allowed';
+          }
+        }, onReverseComplete: ()=>{
+           const component = document.getElementById('projects');
+          console.log("onComponent: ", component, "pointer events: ", component?.style.pointerEvents);
+          if (component) {
+            component.style.pointerEvents = 'none';
+            component.style.cursor = 'not-allowed';
+          }
+        }
+      });
   }
 
-  onComponent(idComponent: string) { 
+  onComponent(idComponent: string) {
     const component = document.getElementById(idComponent);
     console.log("onComponent: ", component, "pointer events: ", component?.style.pointerEvents);
-    if(component){
+    if (component) {
       component.style.pointerEvents = 'auto';
-      component.style.display = 'block';
     }
-    
+
   }
 
-  
-  onComponentLeave(idComponent: string) { 
+
+  onComponentLeave(idComponent: string) {
     const component = document.getElementById(idComponent);
     console.log("onComponentLeave: ", component, "pointer events: ", component?.style.pointerEvents);
-    if(component){
+    if (component) {
       component.style.pointerEvents = 'none';
-      component.style.display = 'none';
     }
-    
-  }
-
-
-
-  projectsAnimate() {
-    const tl = gsap.timeline({
-      ease: 'power2.out',
-      scrollTrigger: {
-        scrub: 1,
-        onEnter: () => {
-          tl.set('#projects', { display: "block" });
-        },
-        onLeaveBack: () => {
-          tl.set('#projects', { display: "none" });
-        }
-      },
-    });
-
-
 
   }
+
+
 
 
 

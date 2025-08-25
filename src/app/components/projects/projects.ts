@@ -14,9 +14,9 @@ gsap.registerPlugin(ScrollTrigger);
 export class Projects implements OnInit {
 
   private platformId = inject(PLATFORM_ID);
- 
+
   showDimaia: boolean = false;
-  showPortfolio : boolean = false;
+  showPortfolio: boolean = false;
   showRefri: boolean = false;
 
   ngOnInit(): void {
@@ -33,26 +33,14 @@ export class Projects implements OnInit {
     const tl = gsap.timeline({
       ease: 'power2.out',
       scrollTrigger: {
-        scrub: 1,
-        onEnter: () => {
-          const cards = document.querySelectorAll<HTMLImageElement>('#container-cards img');
-          cards.forEach(card => {
-            card.style.pointerEvents = 'auto';
-            card.classList.add('hover-enabled');
-          });
-        },
-        onLeaveBack: () => {
-          const cards = document.querySelectorAll<HTMLImageElement>('#container-cards img');
-          cards.forEach(card => {
-            card.style.pointerEvents = 'none'; // los desactivo al volver arriba
-            card.classList.remove('hover-enabled');
-          });
-        }
-      },
+        scrub: 1
+      }
     });
 
-    tl.to('#container-cards', { opacity: 1, duration: 1 });
-    tl.to('#container-cards', { y: 0, duration: 1 }, '<');
+    tl.to('#container-cards', { y: 0,  duration: 1})
+      .to('#container-cards img', { opacity: 1, duration: 1},'<')
+      .to('#container-cards img', {duration: 2 })
+      .to('#container-cards', { y: 200, opacity: 0, duration: 1});
   }
 
 
@@ -61,24 +49,24 @@ export class Projects implements OnInit {
       this.showDimaia = true;
 
     } else if (name == 'portfolio') {
-      this.showPortfolio =  true;
+      this.showPortfolio = true;
 
     } else {
       this.showRefri = true;
     }
   }
 
-   closePopup(name : string): void{
+  closePopup(name: string): void {
     if (name == 'diamia') {
       this.showDimaia = false;
 
     } else if (name == 'portfolio') {
-      this.showPortfolio =  false;
+      this.showPortfolio = false;
 
     } else {
       this.showRefri = false;
     }
-   }
+  }
 
 
 }
