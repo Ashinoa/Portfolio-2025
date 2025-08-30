@@ -110,7 +110,7 @@ export class Aboutme implements OnInit, OnDestroy {
 
     tl.to('#container-aboutme', { opacity: 1, duration: 1 })
       .to('#text-aboutme', { duration: 1, scale: 1, x: 0, y: 0 }, '<')
-      .to('#brujita', { zIndex: 11 })
+      .to('#brujita', { zIndex: 50 })
       .to('#container-description', { y: 80, duration: 1 })
       .to('#text-description', {
         duration: 1, scrambleText: {

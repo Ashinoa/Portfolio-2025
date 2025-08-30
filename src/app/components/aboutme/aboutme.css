@@ -1,6 +1,10 @@
 .size-font {
     font-size: var(--font-size-paragraph4);
 }
+
+#section-img-aboutme{
+    margin-top: 1.5vw;
+}
 /*
 #container-aboutme {
     --color1: #18062B;
