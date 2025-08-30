@@ -6,13 +6,14 @@ import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
 import { CommonModule } from '@angular/common';
 import { debounceTime, fromEvent, Subscription } from 'rxjs';
 import { Router } from '@angular/router';
+import { Header } from "../header/header";
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(ScrambleTextPlugin);
 
 @Component({
   selector: 'app-aboutme',
-  imports: [CommonModule],
+  imports: [CommonModule, Header],
   templateUrl: './aboutme.html',
   styleUrl: './aboutme.css'
 })

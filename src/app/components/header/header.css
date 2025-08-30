@@ -1,0 +1,13 @@
+.size-text{
+    font-size: clamp(1vw, 12px, 3vw);
+}
+
+#container-header{
+    margin-top: 10px;
+}
+
+@media screen and (max-width: 430px) {
+    #container-header{
+        justify-content: space-between;
+    }
+}

@@ -3,4 +3,11 @@
   cursor: not-allowed;
   
 }
+#container-arrow{
+  justify-content: right;
+}
 
+#arrow{
+    width: 5vw;
+    height: clamp(3vw, 50px, 5vw);
+}

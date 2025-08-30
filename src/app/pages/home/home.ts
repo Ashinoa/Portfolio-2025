@@ -4,13 +4,16 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from 'gsap/all';
 import { Start } from "../../components/start/start";
 import { Aboutme } from "../../components/aboutme/aboutme";
+import { Header } from "../../components/header/header";
+
+
 
 
 gsap.registerPlugin(ScrollTrigger);
 
 @Component({
   selector: 'app-home',
-  imports: [Start, Aboutme],
+  imports: [Start, Aboutme, Header],
   templateUrl: './home.html',
   styleUrl: './home.css'
 })
@@ -47,7 +50,7 @@ export class Home implements OnInit, OnDestroy {
 
 
     timeline.to('#start', { opacity: 0, duration: 1 })
-      .to('#aboutme', { opacity: 100, duration: 1 }, '-=0.08');
+            .to('#aboutme', { opacity: 100, duration: 1 }, '-=0.08');
      
   }
 

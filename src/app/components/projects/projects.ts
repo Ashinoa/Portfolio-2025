@@ -3,12 +3,13 @@ import { PLATFORM_ID, inject, Component, OnInit, ChangeDetectorRef } from '@angu
 import { Router } from '@angular/router';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Header } from '../header/header';
 
 gsap.registerPlugin(ScrollTrigger);
 
 @Component({
   selector: 'app-projects',
-  imports: [],
+  imports: [Header],
   templateUrl: './projects.html',
   styleUrl: './projects.css'
 })
@@ -42,14 +43,6 @@ export class Projects implements OnInit {
       scrollTrigger: {
         scrub: 1,
 
-      }, onStart: () => {
-        if (dimaia && portfolio && refri) {
-          dimaia.classList.add('none-events');
-          portfolio.classList.add('none-events');
-          refri.classList.add('none-events');
-          console.log("No se puede tocar las cartas");
-
-        }
       }
     });
 
