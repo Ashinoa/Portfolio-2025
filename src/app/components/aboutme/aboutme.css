@@ -1,57 +1,120 @@
-#text-description{
+.size-font {
     font-size: var(--font-size-paragraph4);
 }
+/*
+#container-aboutme {
+    --color1: #18062B;
+    --color2: #22408C;
+    --color3: #22408C;
+    --color4: #22408C;
+    background: linear-gradient(180deg, var(--color1) 0.04%, var(--color2) 44%, var(--color3) 71%, var(--color4) 80.56%);
+    transition: background 0.3s ease;
+}*/
 
 .background-aboutme{
-  background: var(--gradient-aboutme);
+     background: var(--gradient-aboutme);
 }
 
+#container-button {
+    position: fixed;
+    /* para que siempre esté visible abajo */
+    bottom: 2rem;
+    /* separación del borde inferior */
+    left: 0;
+    width: 100%;
+    /* ocupa todo el ancho */
+    display: flex;
+    justify-content: center;
+    /* centra el botón horizontalmente */
+    z-index: 30;  
+}
+
+#button-projects{
+    padding: 1vw;
+    pointer-events: auto;
+    cursor: auto;
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+.none-events {
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+}
+
+#container-description{
+    padding-bottom: 50px;
+}
 
 @media screen and (max-width: 767.5px) {
+
     /* Estilos para pantallas de hasta 767.5px de ancho */
-    #text-description {
-        font-size: clamp(0.625rem, calc(0.5rem + 1vw), 0.75rem); /* 10px → 12px */
+    .size-font {
+        font-size: clamp(0.625rem, calc(0.5rem + 1vw), 0.75rem);
+        /* 10px → 12px */
     }
 
-    #text-aboutme{
+    #text-aboutme {
         padding-inline: 0;
         padding-top: 5vw;
     }
-    .background-aboutme{
-       background: linear-gradient(180deg,#22408C 0.04%,#ff9222 102.56%); 
+
+    .background-aboutme {
+        background: linear-gradient(180deg, #22408C 0.04%, #ff9222 102.56%);
     }
-    #brujita{
+
+    #brujita {
         width: clamp(6.5rem, 5vw, 10.5rem);
         height: clamp(6.5rem, 5vw, 10.5rem);
     }
+    #container-button{
+        bottom: 1rem;
+    }
 }
 
-@media screen and (max-height: 600px){
-     #text-description {
-        font-size:9px;
+@media screen and (max-height: 600px) {
+    .size-font {
+        font-size: 9px;
         white-space: wrap;
     }
-    
+    #button-projects{
+        font-size: 12px !important;
+    }
+   
+
 }
 
-@media screen and (max-width: 430px){
+@media screen and (max-width: 430px) {
+
     /* Estilos para pantallas de hasta 430px de ancho */
-    #text-description {
+    .size-font {
         font-size: 6px;
         white-space: wrap;
     }
-        
-    #brujita{
+
+    #brujita {
         width: clamp(3.5rem, 5vw, 6.5rem);
         height: clamp(3.5rem, 5vw, 6.5rem);
     }
+     #button-projects{
+        font-size: 12px !important;
+    }
+    #container-button{
+        bottom: 0rem;
+    }
+
 
 }
 
 @media screen and (min-width: 2000px) {
+
     /* Estilos para pantallas de 2000px o más de ancho */
-    #text-description {
+    .size-font {
         font-size: var(--font-size-title5);
     }
-}
+    #button-projects{
+        font-size: var(--font-size-title4) !important;
+    }
 
+}

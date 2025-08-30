@@ -14,12 +14,22 @@
   background-position: bottom;
 }
 
-#dimaia, #portfolio, #refri {
-  transition: transform 0.3s ease-out; 
+#dimaia, #portfolio, #refri{
+  transition: transform 0.3s ease-out;
+  pointer-events: auto;
+  cursor: auto;
 
   &:hover {
     transform: scale(1.1);
     cursor: pointer;
+  }
+}
+
+.none-events {
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+  &:hover{
+    transform: none !important;
   }
 }
 

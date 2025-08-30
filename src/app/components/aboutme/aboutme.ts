@@ -5,6 +5,7 @@ import { ScrollTrigger } from 'gsap/all';
 import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
 import { CommonModule } from '@angular/common';
 import { debounceTime, fromEvent, Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(ScrambleTextPlugin);
@@ -25,6 +26,7 @@ export class Aboutme implements OnInit, OnDestroy {
   private flyPath!: gsap.core.Timeline;
 
 
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
@@ -35,11 +37,11 @@ export class Aboutme implements OnInit, OnDestroy {
       }, 0);
 
       this.resizeSubscription = fromEvent(window, 'resize')
-      .pipe(debounceTime(200)) // Espera 200ms después de que se deje de redimensionar
-      .subscribe(() => {
-        this.defineViewports(); // Actualiza medidas
-        this.animationsWitch(this.viewportWidth, this.viewportHeight); // Reinicia animación adaptada a la pantalla
-      });
+        .pipe(debounceTime(200)) // Espera 200ms después de que se deje de redimensionar
+        .subscribe(() => {
+          this.defineViewports(); // Actualiza medidas
+          this.animationsWitch(this.viewportWidth, this.viewportHeight); // Reinicia animación adaptada a la pantalla
+        });
 
     }
   }
@@ -63,53 +65,89 @@ export class Aboutme implements OnInit, OnDestroy {
       this.flyPath = null!; // Por las dudas le metemos null a la linea del tiempo anterior cuando se redimensiona la pantalla
     }
 
-    gsap.set('#brujita',{x: 0, y: 0});
+    gsap.set('#brujita', { x: 0, y: 0 });
 
     this.flyPath = gsap.timeline({ repeat: -1, yoyo: true });
 
     if (widthScreen !== null && heightScreen !== null && widthScreen >= 700) {
       this.flyPath.to('#brujita', {
-        x: (widthScreen * 25) / 100, y: -(heightScreen * 5) / 100, duration: 2, ease: 'power1.inOut'})
+        x: (widthScreen * 25) / 100, y: -(heightScreen * 5) / 100, duration: 2, ease: 'power1.inOut'
+      })
         .to('#brujita', {
-          x: (widthScreen * 50) / 100, y: (heightScreen * 10) / 100, duration: 3, ease: 'power1.inOut'})
+          x: (widthScreen * 50) / 100, y: (heightScreen * 10) / 100, duration: 3, ease: 'power1.inOut'
+        })
         .to('#brujita', {
-          x: (widthScreen * 75) / 100, y: -(heightScreen * 5) / 100, duration: 2.5, ease: 'power1.inOut'})
+          x: (widthScreen * 75) / 100, y: -(heightScreen * 5) / 100, duration: 2.5, ease: 'power1.inOut'
+        })
         .to('#brujita', {
-          x: (widthScreen * 90) / 100, y: (heightScreen * 10) / 100, duration: 2.5, ease: 'power1.inOut'});
+          x: (widthScreen * 90) / 100, y: (heightScreen * 10) / 100, duration: 2.5, ease: 'power1.inOut'
+        });
 
     } else if (widthScreen !== null && heightScreen !== null && widthScreen < 700) {
       this.flyPath.to('#brujita', {
-        x: (widthScreen * 25) / 100, y: -(heightScreen * 2) / 100, duration: 2, ease: 'power1.inOut'})
+        x: (widthScreen * 25) / 100, y: -(heightScreen * 2) / 100, duration: 2, ease: 'power1.inOut'
+      })
         .to('#brujita', {
-          x: (widthScreen * 50) / 100, y: (heightScreen * 5) / 100, duration: 3, ease: 'power1.inOut' })
+          x: (widthScreen * 50) / 100, y: (heightScreen * 5) / 100, duration: 3, ease: 'power1.inOut'
+        })
         .to('#brujita', {
-          x: (widthScreen * 90) / 100, y: -(heightScreen * 2) / 100, duration: 2.5, ease: 'power1.inOut'})
+          x: (widthScreen * 90) / 100, y: -(heightScreen * 2) / 100, duration: 2.5, ease: 'power1.inOut'
+        })
     } else {
       console.log("WidthScreen es Null o HeightScreen es null");
     }
   }
 
   startAnimationsAboutMe() {
-    const tl = gsap.timeline({
+    const button = document.getElementById('button-projects');
+    let tl = gsap.timeline({
       ease: 'power2.out',
       scrollTrigger: {
-        scrub: 1,
-      },
+        scrub: 1
+      }
     });
 
-    tl.to('#text-aboutme', { duration: 1, scale: 1, x: 0, y: 0 })
-      .to('#brujita', {zIndex:11})
+    tl.to('#container-aboutme', { opacity: 1, duration: 1 })
+      .to('#text-aboutme', { duration: 1, scale: 1, x: 0, y: 0 }, '<')
+      .to('#brujita', { zIndex: 11 })
       .to('#container-description', { y: 80, duration: 1 })
       .to('#text-description', {
-        duration: 1,
-        scrambleText: {
+        duration: 1, scrambleText: {
           text: "{original}",
           chars: "^(?=.*[a-zñÑ])(?=.*[A-ZÑñ])(?=.*\d)[a-zA-Z0-9ñÑ]*$",
           revealDelay: 0,
           speed: 1
         }
       }, '<')
-      .to('#text-description', {duration: 1});
+      .to('#container-button', {
+        opacity: 1, x: 0, duration: 1, onComplete: () => {
+          if (button) {
+            button.classList.remove('none-events');
+            console.log("Se puede tocar el boton");
+
+          }
+        }, onReverseComplete: ()=>{
+           if (button) {
+            button.classList.add('none-events');
+            console.log("No se puede tocar el boton");
+
+          }
+        }
+      });
+    /*.to('#container-aboutme', {
+      "--color1": "#22408C",
+      "--color2": "#9A779B",
+      "--color3": "#E2A491",
+      "--color4": "#FEF9DA", duration: 1 , onComplete: () => {
+        tl.kill();
+        tl = null!;
+        this.router.navigate(['/projects']);
+      }
+    }, '<');*/
+  }
+
+  goToProjects() {
+    this.router.navigate(['/projects']);
   }
 
 }

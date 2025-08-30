@@ -1,7 +1,9 @@
 import { isPlatformBrowser } from '@angular/common';
-import { PLATFORM_ID, inject, Component, OnInit } from '@angular/core';
+import { PLATFORM_ID, inject, Component, OnInit} from '@angular/core';
+import { Router } from '@angular/router';
 import { gsap } from "gsap";
 import { ScrollTrigger } from 'gsap/all';
+
 
 gsap.registerPlugin(ScrollTrigger);
 @Component({
@@ -14,6 +16,8 @@ export class Start implements OnInit {
 
   private platformId = inject(PLATFORM_ID);
 
+  constructor(private router: Router) {}
+
   ngOnInit(): void {
 
     if (isPlatformBrowser(this.platformId)) {
@@ -25,15 +29,21 @@ export class Start implements OnInit {
   }
 
   startAnimations() {
-    const tl = gsap.timeline({
+    let tl = gsap.timeline({
       ease: 'power2.out',
       scrollTrigger: {
         scrub: 1,
+        
       },
     });
 
     tl.to('#picture-id', { duration: 2, scale: 15 })
       .to('#container-font', { opacity: 0, duration: 2 }, '<');
+      /*.to('#container-background',{opacity: 0, duration: 1},'<').call(()=>{
+        tl.kill();
+        tl = null!;
+        this.router.navigate(['/aboutme']);
+      });*/
   }
 
 }

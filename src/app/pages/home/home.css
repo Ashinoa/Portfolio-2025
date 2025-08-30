@@ -1,4 +1,6 @@
 .no-events{
   pointer-events: none; 
   cursor: not-allowed;
+  
 }
+
