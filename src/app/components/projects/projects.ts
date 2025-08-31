@@ -90,7 +90,9 @@ export class Projects implements OnInit {
           }
 
         }
-      });
+      })
+      .to('#container-skills',{opacity: 1,  y: "-80%", duration: 1 });
+      
   }
 
 

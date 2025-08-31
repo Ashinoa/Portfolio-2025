@@ -71,6 +71,16 @@
   font-size: var(--font-size-paragraph4);
 }
 
+#container-skills div{
+  margin: 2%;
+}
+
+#container-skills p, h1{
+  filter: drop-shadow(8px 8px 4px #18062be6);
+  text-transform: uppercase;
+}
+
+
 @media screen and (max-width: 767.5px) {
 
   /* Estilos para pantallas de hasta 767.5px de ancho */
@@ -81,6 +91,21 @@
   #card-refri410 {
     width: clamp(6rem, 4vw, 6.5rem) !important;
   }
+  #container-skills, #skills{
+    flex-direction: column;
+  }
+  #container-skills p{
+   font-size: clamp(2vw, 10px, 5vw);
+   text-align: center;
+  }
+
+}
+
+@media screen and (max-height: 600px) {
+     #container-skills p {
+        font-size: 9px;
+        white-space: wrap;
+    }   
 
 }
 
@@ -103,5 +128,14 @@
   #container-cards img {
     margin: 10px;
   }
+  
+}
+
+@media screen and (min-width: 2000px) {
+
+    /* Estilos para pantallas de 2000px o más de ancho */
+    #container-skills p {
+        font-size: var(--font-size-title5);
+    }
 
 }
