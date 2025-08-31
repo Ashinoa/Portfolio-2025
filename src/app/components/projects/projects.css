@@ -14,7 +14,7 @@
   background-position: bottom;
 }
 
-#dimaia, #portfolio, #refri{
+#dimaia, #portfolio, #refri {
   transition: transform 0.3s ease-out;
   pointer-events: auto;
   cursor: auto;
@@ -28,7 +28,8 @@
 .none-events {
   cursor: not-allowed !important;
   pointer-events: none !important;
-  &:hover{
+
+  &:hover {
     transform: none !important;
   }
 }
@@ -71,15 +72,27 @@
   font-size: var(--font-size-paragraph4);
 }
 
-#container-skills div{
+#container-skills div {
   margin: 2%;
 }
 
-#container-skills p, h1{
-  filter: drop-shadow(8px 8px 4px #18062be6);
+#container-skills p, h1 {
+  filter: drop-shadow(3px 2px 1px #18062be6);
   text-transform: uppercase;
+  margin: 0.5vw;
+  text-align: center;
+  align-self: center;
+  letter-spacing: 4px;
 }
-
+/*
+#skills p{
+  background: #1a0d2752;
+  border-radius: 0.5vw;
+  text-align: center;
+  width: fit-content;
+  align-self: center;
+  margin: 0.5vw;
+}*/
 
 @media screen and (max-width: 767.5px) {
 
@@ -91,21 +104,28 @@
   #card-refri410 {
     width: clamp(6rem, 4vw, 6.5rem) !important;
   }
-  #container-skills, #skills{
+
+  #container-skills, #skills {
     flex-direction: column;
   }
-  #container-skills p{
-   font-size: clamp(2vw, 10px, 5vw);
-   text-align: center;
+
+  #container-skills p {
+    font-size: clamp(2vw, 10px, 5vw);
+    text-align: center;
+    
   }
 
 }
 
 @media screen and (max-height: 600px) {
-     #container-skills p {
-        font-size: 9px;
-        white-space: wrap;
-    }   
+  #container-skills p {
+    font-size: 9px;
+    white-space: wrap;
+  }
+
+  .paragraph1 {
+    font-size: clamp(2vw, 12px, 3vw);
+  }
 
 }
 
@@ -128,14 +148,29 @@
   #container-cards img {
     margin: 10px;
   }
-  
+
+  .paragraph1 {
+    font-size: clamp(2vw, 10px, 3vw);
+  }
 }
 
 @media screen and (min-width: 2000px) {
 
-    /* Estilos para pantallas de 2000px o más de ancho */
-    #container-skills p {
-        font-size: var(--font-size-title5);
-    }
+  /* Estilos para pantallas de 2000px o más de ancho */
+  #container-skills p {
+    font-size: var(--font-size-title5);
+  }
+
+  .paragraph1{
+     font-size: var(--font-size-title4);
+  }
+  .header3, .header4{
+    font-size: var(--font-size-title4);
+  }
+
+  #container-skills p, h1 {
+  /*filter: drop-shadow(8px 8px 4px #18062be6);*/
+  filter: drop-shadow(0.1vw 0.2vw 1px #18062be6);
+}
 
 }

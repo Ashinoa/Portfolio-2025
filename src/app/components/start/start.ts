@@ -3,13 +3,12 @@ import { PLATFORM_ID, inject, Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { gsap } from "gsap";
 import { ScrollTrigger } from 'gsap/all';
-import { Header } from "../header/header";
-
 
 gsap.registerPlugin(ScrollTrigger);
+
 @Component({
   selector: 'app-start',
-  imports: [Header],
+  imports: [],
   templateUrl: './start.html',
   styleUrl: './start.css'
 })

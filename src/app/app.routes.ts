@@ -8,8 +8,6 @@ import { Start } from './components/start/start';
 export const routes: Routes = [
     {path: '', component: Home},
     {path: 'projects', component: Projects},
-    {path: 'start', component: Start},
-    {path: 'aboutme', component: Aboutme},
     {path: '**', redirectTo: ''}
 
 ];

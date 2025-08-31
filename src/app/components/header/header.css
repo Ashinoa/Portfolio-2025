@@ -1,13 +1,25 @@
-.size-text{
+.size-text {
     font-size: clamp(1vw, 12px, 3vw);
 }
 
-#container-header{
+#container-header {
     margin-top: 10px;
 }
 
-@media screen and (max-width: 430px) {
-    #container-header{
-        justify-content: space-between;
-    }
+.menu-toggle {
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: transparent;
+    border: none;
+    z-index: 100;
+    
 }
+
+@media screen and (max-width: 430px) {
+
+}
+
+@media screen and (max-width: 767.5px) {}
+
+@media screen and (max-height: 500px) {}

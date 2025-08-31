@@ -82,8 +82,14 @@
         font-size: 9px;
         white-space: wrap;
     }
+
+    #container-button{
+        display: none !important;
+    }
     #button-projects{
-        font-size: 12px !important;
+        display: none !important;
+        cursor: not-allowed !important;
+        pointer-events: none !important;
     }
    
 
@@ -121,4 +127,17 @@
         font-size: var(--font-size-title4) !important;
     }
 
+}
+
+@media screen and (min-height: 2000px) {
+    /* Estilos para pantallas de 2000px o más de ALTO */
+    #text-description{
+        font-size: clamp(3vw,20px,7vw)!important;
+    }
+    #button-projects{
+        font-size: clamp(4vw,15px,8vw) !important;
+    }
+     #container-button{
+        bottom: 1rem;
+    }
 }

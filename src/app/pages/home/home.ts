@@ -6,9 +6,6 @@ import { Start } from "../../components/start/start";
 import { Aboutme } from "../../components/aboutme/aboutme";
 import { Header } from "../../components/header/header";
 
-
-
-
 gsap.registerPlugin(ScrollTrigger);
 
 @Component({

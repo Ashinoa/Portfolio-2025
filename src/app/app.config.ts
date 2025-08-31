@@ -10,7 +10,7 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes, withInMemoryScrolling({
-      scrollPositionRestoration: 'enabled', // 👈 resetea scroll a (0,0) en cada navegación
+      scrollPositionRestoration: 'enabled', // resetea scroll a (0,0) en cada navegación
       anchorScrolling: 'enabled'            // opcional: soporta #anclas
     })), provideClientHydration(withEventReplay())
   ]
