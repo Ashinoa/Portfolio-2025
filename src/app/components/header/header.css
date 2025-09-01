@@ -8,18 +8,32 @@
 
 .menu-toggle {
     position: fixed;
-    top: 0;
+    bottom: 0;
     right: 0;
     background-color: transparent;
     border: none;
     z-index: 100;
-    
+
 }
 
 @media screen and (max-width: 430px) {
+    #cat {
+        width: clamp(3vw, 50px, 20vw) !important;
+        height: clamp(3vw, 50px, 20vw) !important;
 
+    }
 }
 
-@media screen and (max-width: 767.5px) {}
+@media screen and (max-width: 767.5px) {
+    #cat {
+        width: clamp(7vw, 30px, 10vw);
+        height: clamp(7vw, 30px, 10vw);
+    }
+}
 
-@media screen and (max-height: 500px) {}
+@media screen and (min-width: 2000px) {
+    #cat {
+        width: clamp(3vw, 50px, 8vw);
+        height: clamp(3vw, 50px, 8vw);
+    }
+}

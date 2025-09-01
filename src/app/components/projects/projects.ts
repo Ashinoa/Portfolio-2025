@@ -4,12 +4,13 @@ import { Router } from '@angular/router';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Header } from '../header/header';
+import { Footer } from "../footer/footer";
 
 gsap.registerPlugin(ScrollTrigger);
 
 @Component({
   selector: 'app-projects',
-  imports: [Header],
+  imports: [Header, Footer],
   templateUrl: './projects.html',
   styleUrl: './projects.css'
 })

@@ -1,0 +1,33 @@
+.buttons {
+    filter: drop-shadow(3px 2px 1px #18062be6);
+    width: clamp(1vw, 20px, 5vw);
+    height: clamp(1vw, 20px, 5vw);
+    margin: 1vw;
+    opacity: 50%;
+
+    &:hover {
+        opacity: 100%;
+        cursor: pointer;
+    }
+}
+
+#container-footer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: center;
+    position: fixed;
+    width: fit-content;
+    bottom: 0;
+    position: fixed;
+}
+
+@media screen and (min-width: 2000px) {
+    .buttons {
+        filter: drop-shadow(0.1vw 0.2vw 1px #18062be6);
+        width: clamp(3vw, 50px, 8vw);
+        height: clamp(3vw, 50px, 8vw);
+    }
+}

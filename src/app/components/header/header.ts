@@ -51,7 +51,10 @@ export class Header implements OnInit, OnDestroy {
       this.showHeader = false;
       console.log("ShowHeader: ", this.showHeader);
       console.log("ShowMenuGatito: ", this.showMenuButton);
-    } 
+    } else{
+      this.showHeader = true;
+      this.showMenuButton = false;
+    }
   }
 
   toggleSidebar() {

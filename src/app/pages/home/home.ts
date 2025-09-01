@@ -5,12 +5,13 @@ import { ScrollTrigger } from 'gsap/all';
 import { Start } from "../../components/start/start";
 import { Aboutme } from "../../components/aboutme/aboutme";
 import { Header } from "../../components/header/header";
+import { Footer } from "../../components/footer/footer";
 
 gsap.registerPlugin(ScrollTrigger);
 
 @Component({
   selector: 'app-home',
-  imports: [Start, Aboutme, Header],
+  imports: [Start, Aboutme, Header, Footer],
   templateUrl: './home.html',
   styleUrl: './home.css'
 })
